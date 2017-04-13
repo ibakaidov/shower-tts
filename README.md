@@ -6,7 +6,7 @@ Plugin for the [Shower](https://github.com/shower/shower/) presentation engine. 
 
 ### For first. install plugin to your presentation.
 ```bash
-    npm install --save shower-tss
+    npm install --save shower-tts
 ```
 
 ### Second. Require link to your index file.
