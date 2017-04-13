@@ -11,8 +11,8 @@ Plugin for the [Shower](https://github.com/shower/shower/) presentation engine. 
 
 ### Second. Require link to your index file.
 ```html
-	<script src="node_mpdules/shower-tts/shower-tts.js"></script>
-	<link rel="stylesheet" href="node_mpdules/shower-tts/shower-tts-style.css">
+	<script src="node_modules/shower-tts/shower-tts.js"></script>
+	<link rel="stylesheet" href="node_modules/shower-tts/shower-tts-style.css">
 ```
  And add plugin's div
  ```html
