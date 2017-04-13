@@ -1,4 +1,4 @@
-#!/bin/node
+#!/usr/bin/env node
 const say = require('say');
 const express = require('express');
 

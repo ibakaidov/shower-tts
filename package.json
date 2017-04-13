@@ -1,6 +1,6 @@
 {
   "name": "shower-tts",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Shower's Plugin for tts slides",
   "main": "shower-tts-server.js",
   "scripts": {
