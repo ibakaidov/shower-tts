@@ -1,0 +1,32 @@
+{
+  "name": "shower-tts",
+  "version": "0.0.0",
+  "description": "Shower's Plugin for tts slides",
+  "main": "shower-tts-server.js",
+  "scripts": {
+    "run": "node ./shower-tts-server"
+  },
+  "bin": {
+    "shower-tts": "./shower-tts-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ibakaidov/shower-tts.git"
+  },
+  "keywords": [
+    "shower",
+    "plugin",
+    "tts"
+  ],
+  "author": "ibakaidov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ibakaidov/shower-tts/issues"
+  },
+  "homepage": "https://github.com/ibakaidov/shower-tts#readme",
+  "dependencies": {
+    "express": "^4.15.2",
+    "optimist": "^0.6.1",
+    "say": "^0.11.0"
+  }
+}
