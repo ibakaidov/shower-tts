@@ -14,9 +14,9 @@ Plugin for the [Shower](https://github.com/shower/shower/) presentation engine. 
 	<script src="node_modules/shower-tts/shower-tts.js"></script>
 	<link rel="stylesheet" href="node_modules/shower-tts/shower-tts-style.css">
 ```
- And add plugin's div
+ And add plugin's meta
  ```html
-	<div class="tts"></div>
+	<meta class="tts"></meta>
  ```
 
 ## Use
@@ -26,18 +26,11 @@ Plugin for the [Shower](https://github.com/shower/shower/) presentation engine. 
 ```html
     	<section class="slide">
 		<h2>Some slide</h2>
-		<div class="tts-slidetext shower-tts-hide">
+		<meta class="tts shower-tts-hide">
             Hello. i am ivan. this is Text for speech!
-        </div>
+    </meta>
 	</section>
 
-```
-
-
-### Start speak server (supports mac os x)
-
-```bash
-./node_modules/.bin/shower-tts-server
 ```
 
 ### Open presentation.

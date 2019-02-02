@@ -1,29 +1,7 @@
 /**
  * @fileOverview
- * Progress plugin for shower.
+ * TTS plugin for shower.
  */
-function Server() {
-
-}
-
-Server.prototype.say = function (text, cb) {
-    this._httpGetAsync('http://127.0.0.1:23921/say?text="' + encodeURI(text) + '"', cb);
-}
-Server.prototype.stop = function (cb) {
-    this._httpGetAsync('http://127.0.0.1:23921/stop', cb);
-
-}
-
-Server.prototype._httpGetAsync = (theUrl, callback) => {
-    var xmlHttp = new XMLHttpRequest();
-    callback = callback || function () { };
-    xmlHttp.onreadystatechange = function () {
-        if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
-            callback(xmlHttp.responseText);
-    }
-    xmlHttp.open("GET", theUrl, true); // true for asynchronous 
-    xmlHttp.send(null);
-}
 
 shower.modules.define('shower-tts', [
     'util.extend'
@@ -42,7 +20,6 @@ shower.modules.define('shower-tts', [
         options = options || {};
         this._shower = shower;
         this._playerListeners = null;
-        this._server = new Server();
 
         this._element = null;
         this._elementSelector = options.selector || '.tts';
@@ -58,30 +35,35 @@ shower.modules.define('shower-tts', [
         }
     }
 
-    extend(Tts.prototype, /** @lends plugin.Tts.prototype */{
+    extend(Tts.prototype, /** @lends plugin.Tts.prototype */ {
 
         destroy: function () {
             this._clearListeners();
             this._shower = null;
-            this._server = null;
             this.currentText = null;
         },
 
         updateProgress: function () {
-            this.currentText=null;
+            this.currentText = null;
             var slidetext = this._shower.player.getCurrentSlide().layout._element.querySelector('.tts-slidetext');
-            if (slidetext != null) {
-                this.currentText = (slidetext.innerHTML);
-            }
+
+            this.currentText = (slidetext.innerHTML) || "";
+
         },
         sayCurrent: function () {
-            if (this.currentText===null) return;
-            this._server.stop(() => {
-                this._server.say(this.currentText);
-            })
+            if (this.currentText === null) return;
+            var msg = new SpeechSynthesisUtterance();
+            msg.voice = this.options.voice||window.speechSynthesis.voice
+            msg.rate = 1;
+            msg.pitch = 1;
+            msg.text = this.currentText;
+
+
+            speechSynthesis.speak(msg);
+
         },
         stop: function () {
-            this._server.stop();
+            window.speechSynthesis.stop
         },
 
         _setupListeners: function () {
